@@ -13,12 +13,19 @@ export type Quest = {
   rarity:  string;
   reward:  string;
   content: string;
-  diff: '⭐️' |'⭐️⭐️'|'⭐️⭐️⭐️' |'⭐️⭐️⭐️⭐️';
-  xp:number;
+  diff:    '⭐' | '⭐⭐' | '⭐⭐⭐' | '⭐⭐⭐⭐'; 
+  xp:      number;                              
 };
 export type ActiveQuest = Quest & {
 heroId: number;
 heroName: string;
 heroEmoji: string;
 } 
+
+export type Fighter = {
+  name:string;
+  emoji:string;
+  hp:number;
+  maxHp:number;
+}
  

@@ -13,4 +13,11 @@ export const quests: Quest[] = [
   { id: 2, title: 'Quête Secondaire',  rarity: 'Normal',     reward: '200 XP',   content: 'Escorter le marchand jusqu\'à Bree.',                  diff: '⭐',       xp: 20  },
   { id: 3, title: 'Contrat de Guilde', rarity: 'Légendaire', reward: '9 999 XP', content: 'Tuer le dragon Smaug et récupérer le trésor d\'Erebor.', diff: '⭐⭐⭐⭐', xp: 150 },
 ];
+
+export const ENEMY_BY_DIFF = {
+  '⭐':     { name: 'Gobelin', emoji: '👺', hp: 40,  maxHp: 40  },
+  '⭐⭐':   { name: 'Troll',   emoji: '🧌', hp: 70,  maxHp: 70  },
+  '⭐⭐⭐': { name: 'Dragon',  emoji: '🐉', hp: 100, maxHp: 100 },
+  '⭐⭐⭐⭐':{ name: 'Démon',   emoji: '👿', hp: 150, maxHp: 150 },
+} as const;
  
