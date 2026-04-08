@@ -9,8 +9,8 @@ export const heroes: Hero[] = [
 ];
  
 export const quests: Quest[] = [
-  { id: 1, title: 'Quête Principale',  rarity: 'Épique',     reward: '1 000 XP', content: 'Détruire l\'Anneau Unique dans les feux du Mont Doom.' },
-  { id: 2, title: 'Quête Secondaire',  rarity: 'Normal',     reward: '200 XP',   content: 'Escorter le marchand jusqu\'à Bree.' },
-  { id: 3, title: 'Contrat de Guilde', rarity: 'Légendaire', reward: '9 999 XP', content: 'Tuer le dragon Smaug et récupérer le trésor d\'Erebor.' },
+  { id: 1, title: 'Quête Principale',  rarity: 'Épique',     reward: '1 000 XP', content: 'Détruire l\'Anneau Unique dans les feux du Mont Doom.', diff: '⭐⭐⭐',   xp: 80  },
+  { id: 2, title: 'Quête Secondaire',  rarity: 'Normal',     reward: '200 XP',   content: 'Escorter le marchand jusqu\'à Bree.',                  diff: '⭐',       xp: 20  },
+  { id: 3, title: 'Contrat de Guilde', rarity: 'Légendaire', reward: '9 999 XP', content: 'Tuer le dragon Smaug et récupérer le trésor d\'Erebor.', diff: '⭐⭐⭐⭐', xp: 150 },
 ];
  
