@@ -1,23 +1,16 @@
-
-function QuestBox({title, rarity,children}) {
+function QuestBox({ title, rarity, reward, content }: { title: string; rarity: string; reward: string; content: string }) {
   return (
     <div className="quest-box">
+      <div className="quest-header">
         <h3>{title}</h3>
-        {rarity && <span className="tag"> {rarity}</span>}
-        <div className="quest-content">
-            {children}
-        </div>
+        {rarity && <span className="tag">{rarity}</span>}
+      </div>
+      <div className="quest-content">
+        <p>{content}</p>
+        {reward && <span className="reward">{reward}</span>}
+      </div>
     </div>
-  )
+  );
 }
 
-// QuestBox.propTypes = {
-// title : PropTypes.string.isRequired,
-// rarity: PropTypes.string,
-// children :  PropTypes.node.isrequired,
-// };
-// QuestBox.defaultProps = {
-//     rarity= null
-// }
-
-export default QuestBox
+export default QuestBox;
