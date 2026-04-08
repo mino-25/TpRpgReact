@@ -40,8 +40,7 @@
   background: rgba(192, 146, 42, 0.1);
   font-weight: 500;
 }
- 
-/* ========== HOME PAGE ========== */
+
 .home-page {
   scroll-behavior: smooth;
 }
@@ -133,7 +132,6 @@
   line-height: 1.6;
 }
 
-/* ========== STATS SECTION ========== */
 .stats-section {
   background: linear-gradient(180deg, #1a1a2e 0%, #161627 100%);
   padding: 4rem 2rem;
@@ -180,7 +178,6 @@
   font-weight: 500;
 }
 
-/* ========== HERO MOSAIC ========== */
 .hero-mosaic-section {
   padding: 4rem 2rem;
   max-width: 1200px;
@@ -302,7 +299,6 @@
   text-transform: uppercase;
 }
 
-/* ========== CTA SECTION ========== */
 .cta-section {
   background: linear-gradient(135deg, #1a1a2e 0%, #161627 100%);
   padding: 4rem 2rem;
@@ -471,8 +467,7 @@
 }
  
 .not-found-emoji { font-size: 3rem; }
- 
-/* ========== HERO LIST SECTION ========== */
+
 .hero-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -663,7 +658,6 @@
   font-size: 1.1rem;
 }
 
-/* ========== QUEST PAGE ========== */
 .quests-page {
   padding: 2rem;
   max-width: 900px;
@@ -686,7 +680,6 @@
   margin-bottom: 2rem;
 }
 
-/* ========== QUEST BOARD ========== */
 .quest-board {
   display: flex;
   flex-direction: column;

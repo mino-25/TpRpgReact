@@ -23,7 +23,6 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      {/* Hero Section with Parallax */}
       <section className="hero-section">
         <div className="parallax-bg" style={{ transform: `translateY(${scrollY * 0.5}px)` }}>
           <div className="parallax-layer layer-1">🏰</div>
@@ -39,7 +38,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Stats Section with Scroll Animation */}
       <section className="stats-section" onMouseEnter={() => setStatsVisible(true)}>
         <div className="stats-container">
           <div className={`stat-item ${statsVisible ? 'visible' : ''}`}>
@@ -57,7 +55,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Hero Mosaic */}
       <section className="hero-mosaic-section">
         <h2>Les Guerriers de la Guilde</h2>
         <div className="hero-mosaic">
@@ -82,7 +79,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="cta-section">
         <h2>Prêt à rejoindre l'aventure?</h2>
         <div className="cta-buttons">
