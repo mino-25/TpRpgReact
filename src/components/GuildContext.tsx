@@ -1,3 +1,4 @@
+import { createContext, use, useReducer } from 'react';
 import { heroes as initialHeroes, quests as initialQuests } from '../data';
 import type { ActiveQuest, Quest } from '../types';
 
@@ -48,14 +49,44 @@ function guildReducer(state: GuildState, action: GuildAction): GuildState {
                 )
         }
     }
-    
+    case 'COMPLETE_QUEST':
+        return {
+            ...state,
+            gold: state.gold + action.payload.goldGained,
+            xp: state.xp + action.payload.xpGained,
+            activeQuest: null,
+            quests: state.quests.filter(q => q.id !== state.activeQuest?.id),
+        }
+    case 'ABANDON_QUEST':
+        return {...state, activeQuest:null}
+
         default:
-            break;
+            return state;
     }
 }
 
 type GuildContextValue = GuildState & {
   selectHero:    (id: number)  => void;
   takeQuest:     (quest: Quest) => void;
-  
+  completeQuest: (xpGained:number, goldGained: number) => void;
+  abandonQuest: () =>void;
 };
+  const GuildContext = createContext<GuildContextValue |null>(null);
+  
+export function guildProvider({children}:{children:React.ReactNode}){
+    const [state,dispatch] = useReducer(guildReducer,initialState);
+
+    const selectHero = (id:number) => dispatch({type:'SELECT_HERO', payload:id})
+    const takeQuest = (quest:Quest) => dispatch({type:'TAKE_QUEST', payload:quest})
+    const completeQuest = (xpGained:number, goldGained:number) => dispatch({type:'COMPLETE_QUEST', payload:{xpGained,goldGained}})
+    const abandonQuest = () => dispatch({type:'ABANDON_QUEST'})
+
+    return (
+    <GuildContext value={{ ...state, selectHero, takeQuest, completeQuest, abandonQuest}}>{children}</GuildContext>
+        )
+}
+    export function useGuild(): GuildContextValue {
+        const ctx= use(GuildContext);
+        if(!ctx) throw new Error( "useGuild doit être utilisé par le guilProvider");
+        return ctx;
+    }
