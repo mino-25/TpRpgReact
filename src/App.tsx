@@ -1,30 +1,27 @@
-import GuildHeader from "./components/GuildHeader";
-import HeroList from "./components/HeroList";
-import QuestBoard from "./components/QuestBoard";
-
-
-const heroes = [
-  { id: 1, name: "Lyria",  classe: "Archère",        level: 28, hp: 80,  isAlive: true  },
-  { id: 2, name: "Theron", classe: "Paladin",         level: 45, hp: 100, isAlive: true  },
-  { id: 3, name: "Zara",   classe: "Nécromancienne",  level: 33, hp: 60,  isAlive: false },
-  { id: 4, name: "Brom",   classe: "Guerrier",        level: 20, hp: 120, isAlive: true  },
-  { id: 5, name: "Sylven", classe: "Druide",          level: 38, hp: 90,  isAlive: true  },
-];
- 
+import { Routes, Route } from 'react-router';
+import Navbar          from './components/Navbar';
+import HomePage from './pages/HomePage';
+import HeroesPage from './pages/HeroesPage';
+import HeroDetailPage from './pages/HeroDetailPage';
+import QuestsPage from './pages/QuestPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
-
   return (
     <div className="app">
-      <GuildHeader
-        guildName="Les Dragons d'Argent"
-        memberCount={heroes.length}
-      />
-      <HeroList heroes={heroes} />
-
-      <QuestBoard />
+      <Navbar />
+ 
+      <main className="main-content">
+        <Routes>
+          <Route path="/"            element={<HomePage />}       />
+          <Route path="/heroes"      element={<HeroesPage />}     />
+          <Route path="/heroes/:id"  element={<HeroDetailPage />} />
+          <Route path="/quests"      element={<QuestsPage />}     />
+          <Route path="*"            element={<NotFoundPage />}   />
+        </Routes>
+      </main>
     </div>
   );
 }
-
-export default App
+ 
+export default App;
