@@ -1,15 +1,74 @@
 {
   "heroes": [
-    { "id": 1, "name": "Lyria",  "classe": "Archère",        "level": 28, "hp": 80,  "isAlive": true  },
-    { "id": 2, "name": "Theron", "classe": "Paladin",         "level": 45, "hp": 100, "isAlive": true  },
-    { "id": 3, "name": "Zara",   "classe": "Nécromancienne",  "level": 33, "hp": 60,  "isAlive": false },
-    { "id": 4, "name": "Brom",   "classe": "Guerrier",        "level": 20, "hp": 120, "isAlive": true  },
-    { "id": 5, "name": "Sylven", "classe": "Druide",          "level": 38, "hp": 90,  "isAlive": true  }
+    {
+      "id": "1",
+      "name": "Lyria",
+      "classe": "Archère",
+      "level": 28,
+      "hp": 80,
+      "isAlive": true
+    },
+    {
+      "id": "2",
+      "name": "Theron",
+      "classe": "Paladin",
+      "level": 45,
+      "hp": 100,
+      "isAlive": true
+    },
+    {
+      "id": "3",
+      "name": "Zara",
+      "classe": "Nécromancienne",
+      "level": 33,
+      "hp": 60,
+      "isAlive": false
+    },
+    {
+      "id": "4",
+      "name": "Brom",
+      "classe": "Guerrier",
+      "level": 20,
+      "hp": 120,
+      "isAlive": true
+    },
+    {
+      "id": "5",
+      "name": "Sylven",
+      "classe": "Druide",
+      "level": 38,
+      "hp": 90,
+      "isAlive": true
+    }
   ],
   "quests": [
-    { "id": 1, "title": "Dragon des Montagnes", "rarity": "Épique",     "reward": "200 po",   "content": "Détruire l'Anneau Unique dans les feux du Mont Doom.", "diff": "⭐⭐⭐",    "xp": 80  },
-    { "id": 2, "title": "Gobelins des Bois",    "rarity": "Normal",     "reward": "80 po",    "content": "Escorter le marchand jusqu'à Bree.",                  "diff": "⭐",        "xp": 20  },
-    { "id": 3, "title": "Esprit de la Forêt",   "rarity": "Rare",       "reward": "150 po",   "content": "Retrouver l'artefact volé par les créatures des bois.", "diff": "⭐⭐",      "xp": 40  },
-    { "id": 4, "title": "Crypte Oubliée",       "rarity": "Légendaire", "reward": "300 po",   "content": "Tuer le dragon Smaug et récupérer le trésor d'Erebor.", "diff": "⭐⭐⭐⭐", "xp": 150 }
-  ]
+    {
+      "id": "2",
+      "title": "Gobelins des Bois",
+      "rarity": "Normal",
+      "reward": "80 po",
+      "content": "Escorter le marchand jusqu'à Bree.",
+      "diff": "⭐",
+      "xp": 20
+    },
+    {
+      "id": "3",
+      "title": "Esprit de la Forêt",
+      "rarity": "Rare",
+      "reward": "150 po",
+      "content": "Retrouver l'artefact volé par les créatures des bois.",
+      "diff": "⭐⭐",
+      "xp": 40
+    },
+    {
+      "id": "4",
+      "title": "Crypte Oubliée",
+      "rarity": "Légendaire",
+      "reward": "300 po",
+      "content": "Tuer le dragon Smaug et récupérer le trésor d'Erebor.",
+      "diff": "⭐⭐⭐⭐",
+      "xp": 150
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

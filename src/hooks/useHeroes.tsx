@@ -42,7 +42,6 @@ export function useHeroes(): UseHeroesReturn {
 
   const addHero = async (hero: Omit<Hero, 'id'>) => {
     const created = await heroApi.create(hero);
-    // Mise à jour optimiste — pas besoin de refetch
     setHeroes(prev => [...prev, created]);
   };
 

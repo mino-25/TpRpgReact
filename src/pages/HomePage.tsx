@@ -1,93 +1,50 @@
-import { Link } from 'react-router';
-import { useState, useEffect } from 'react';
-import { heroes, quests } from '../data';
-
-const CLASS_EMOJI: Record<string, string> = {
-  'Archère':        '🏹',
-  'Paladin':        '🛡️',
-  'Nécromancienne': '💀',
-  'Guerrier':       '⚔️',
-  'Druide':         '🌿',
-};
-
+import { Link }       from 'react-router';
+import GuildHeader    from '../components/GuildHeader';
+import { useGuild }   from '../context/GuildContext';
+import { useHeroes }  from '../hooks/useHeroes';
+import { useQuests }  from '../hooks/useQuests';
+ 
 function HomePage() {
+  const { gold, xp }                        = useGuild();
+  const { heroes, loading: hLoading }       = useHeroes();
+  const { quests, loading: qLoading }       = useQuests();
+ 
   const aliveCount = heroes.filter(h => h.isAlive).length;
-  const [scrollY, setScrollY] = useState(0);
-  const [statsVisible, setStatsVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+ 
   return (
-    <div className="home-page">
-      <section className="hero-section">
-        <div className="parallax-bg" style={{ transform: `translateY(${scrollY * 0.5}px)` }}>
-          <div className="parallax-layer layer-1">🏰</div>
-          <div className="parallax-layer layer-2">⚔️</div>
-          <div className="parallax-layer layer-3">👑</div>
-          <div className="parallax-layer layer-4">🗡️</div>
+    <div className="page home-page">
+      <GuildHeader guildName="Les Dragons d'Argent" memberCount={heroes.length} />
+ 
+      <div className="stats-grid">
+        <div className="stat-card">
+          <span className="stat-value">{hLoading ? '...' : heroes.length}</span>
+          <span className="stat-label">Héros enregistrés</span>
         </div>
-
-        <div className="hero-content">
-          <h1 className="hero-title">Guilde des Légendes</h1>
-          <p className="hero-subtitle">Bienvenue dans le sanctuaire des grands guerriers</p>
-          <p className="hero-description">Où les braves se rassemblent pour affronter des quêtes épiques et forger leur légende éternelle.</p>
+        <div className="stat-card">
+          <span className="stat-value">{hLoading ? '...' : aliveCount}</span>
+          <span className="stat-label">Héros en vie</span>
         </div>
-      </section>
-
-      <section className="stats-section" onMouseEnter={() => setStatsVisible(true)}>
-        <div className="stats-container">
-          <div className={`stat-item ${statsVisible ? 'visible' : ''}`}>
-            <div className="stat-number">{heroes.length}</div>
-            <div className="stat-text">Héros enregistrés</div>
-          </div>
-          <div className={`stat-item ${statsVisible ? 'visible' : ''}`}>
-            <div className="stat-number">{aliveCount}</div>
-            <div className="stat-text">Héros en vie</div>
-          </div>
-          <div className={`stat-item ${statsVisible ? 'visible' : ''}`}>
-            <div className="stat-number">{quests.length}</div>
-            <div className="stat-text">Quêtes disponibles</div>
-          </div>
+        <div className="stat-card">
+          <span className="stat-value">{qLoading ? '...' : quests.length}</span>
+          <span className="stat-label">Quêtes disponibles</span>
         </div>
-      </section>
-
-      <section className="hero-mosaic-section">
-        <h2>Les Guerriers de la Guilde</h2>
-        <div className="hero-mosaic">
-          {heroes.map((hero, index) => {
-            const emoji = CLASS_EMOJI[hero.classe] ?? '🧙';
-            return (
-              <Link
-                key={hero.id}
-                to={`/heroes/${hero.id}`}
-                className={`mosaic-card ${hero.isAlive ? 'alive' : 'dead'}`}
-                style={{ '--delay': `${index * 50}ms` } as React.CSSProperties}
-              >
-                <div className="mosaic-emoji">{emoji}</div>
-                <div className="mosaic-info">
-                  <h3>{hero.name}</h3>
-                  <p>{hero.classe}</p>
-                  <span className="mosaic-level">Niv. {hero.level}</span>
-                </div>
-              </Link>
-            );
-          })}
+        <div className="stat-card">
+          <span className="stat-value">{gold} 💰</span>
+          <span className="stat-label">Or de la guilde</span>
         </div>
-      </section>
-
-      <section className="cta-section">
-        <h2>Prêt à rejoindre l'aventure?</h2>
-        <div className="cta-buttons">
-          <Link to="/heroes" className="btn-cta primary">⚔️ Recruter des Héros</Link>
-          <Link to="/quests" className="btn-cta secondary">📜 Découvrir les Quêtes</Link>
+        <div className="stat-card">
+          <span className="stat-value">{xp} XP</span>
+          <span className="stat-label">Expérience totale</span>
         </div>
-      </section>
+      </div>
+ 
+      <div className="home-actions">
+        <Link to="/heroes" className="btn-primary">⚔️ Voir les héros</Link>
+        <Link to="/quests" className="btn-secondary">📜 Prendre une quête</Link>
+      </div>
     </div>
   );
 }
-
+ 
 export default HomePage;
+ 
