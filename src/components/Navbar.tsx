@@ -13,7 +13,7 @@ function Navbar() {
       <ul className="navbar-links">
         <li>
           <NavLink to="/leaderboard" className={({ isActive }) => isActive ? 'active' : ''}>
-            🏆 Leaderboard
+            🏆 Classement
           </NavLink>
         </li>
         <li>
