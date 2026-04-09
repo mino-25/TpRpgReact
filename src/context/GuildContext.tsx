@@ -1,8 +1,7 @@
 
-
 import { createContext, use, useReducer } from 'react';
 import type { Quest, ActiveQuest }        from '../types';
-import { heroes as initialHeroes, quests as initialQuests } from '../data';
+import { heroes as initialHeroes }        from '../data';
 
 
 type GuildState = {
@@ -10,7 +9,6 @@ type GuildState = {
   xp:            number;
   currentHeroId: number | null;
   activeQuest:   ActiveQuest | null;
-  quests:        Quest[];
 };
 
 const initialState: GuildState = {
@@ -18,7 +16,6 @@ const initialState: GuildState = {
   xp:            0,
   currentHeroId: null,
   activeQuest:   null,
-  quests:        initialQuests,
 };
 
 type GuildAction =
@@ -26,6 +23,7 @@ type GuildAction =
   | { type: 'TAKE_QUEST';       payload: Quest   }
   | { type: 'COMPLETE_QUEST';   payload: { xpGained: number; goldGained: number } }
   | { type: 'ABANDON_QUEST'                       };
+
 
 function guildReducer(state: GuildState, action: GuildAction): GuildState {
   switch (action.type) {
@@ -48,9 +46,6 @@ function guildReducer(state: GuildState, action: GuildAction): GuildState {
           heroName:  hero.name,
           heroEmoji: ({'Archère':'🏹','Paladin':'🛡️','Nécromancienne':'💀','Guerrier':'⚔️','Druide':'🌿'} as Record<string,string>)[hero.classe] ?? '🧙',
         },
-        quests: state.quests.map(q =>
-          q.id === action.payload.id ? { ...q } : q
-        ),
       };
     }
 
@@ -60,8 +55,6 @@ function guildReducer(state: GuildState, action: GuildAction): GuildState {
         gold:        state.gold + action.payload.goldGained,
         xp:          state.xp  + action.payload.xpGained,
         activeQuest: null,
-        // Retirer la quête complétée de la liste
-        quests: state.quests.filter(q => q.id !== state.activeQuest?.id),
       };
 
     case 'ABANDON_QUEST':
@@ -71,7 +64,6 @@ function guildReducer(state: GuildState, action: GuildAction): GuildState {
       return state;
   }
 }
-
 
 type GuildContextValue = GuildState & {
   selectHero:    (id: number)  => void;
@@ -104,7 +96,6 @@ export function GuildProvider({ children }: { children: React.ReactNode }) {
     </GuildContext>
   );
 }
-
 
 export function useGuild(): GuildContextValue {
   const ctx = use(GuildContext);
