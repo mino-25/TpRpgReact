@@ -6,6 +6,7 @@ import HomePage           from './pages/HomePage';
 import HeroesPage         from './pages/HeroesPage';
 import HeroDetailPage     from './pages/HeroDetailPage';
 import QuestsPage         from './pages/QuestPage';
+import Leaderboard        from './pages/LeaderBoard';
 import BattlePage         from './pages/BattlePage';      
 import NotFoundPage       from './pages/NotFoundPage';
 
@@ -22,6 +23,7 @@ function App() {
             <Route path="/heroes/:id" element={<HeroDetailPage />} />
             <Route path="/quests"     element={<QuestsPage />}     />
             <Route path="/battle"     element={<BattlePage />}     /> 
+            <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="*"           element={<NotFoundPage />}   />
           </Routes>
         </main>

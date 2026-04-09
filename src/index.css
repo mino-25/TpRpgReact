@@ -1030,3 +1030,27 @@
   background:    #EAF3DE;
   color:         #3B6D11;
 }
+
+/* Le héro au rang 1 */
+.hero-row.first-place {
+background-color: #ffd700; /* Or */
+font-weight: bold;
+}
+/* Le tableau général */
+.leaderboard-table {
+border-collapse: collapse;
+width: 100%;
+}
+.leaderboard-table th {
+background-color: #333;
+color: white;
+padding: 10px;
+text-align: left;
+}
+.leaderboard-table td {
+border-bottom: 1px solid #ddd;
+padding: 10px;
+}
+.leaderboard-table tr:hover {
+background-color: #f5f5f5;
+}
